@@ -35,6 +35,27 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        long long sum=0;
+        long long sml=INT_MAX;//LLONG_MAX
+        long long secsml=INT_MAX;
+        
+        while(n--){
+            int m;
+            cin>>m;
+            vector<long long>vec(m);//no need to store the arrays
+            for(int i=0;i<m;i++){
+                cin>>vec[i];
+            }sort(vec.begin(),vec.end());
+            sml=min(sml,vec[0]);
+            secsml=min(secsml,vec[1]);
+            sum+=vec[1];
+        }sum=sum-secsml+sml;
+        cout<<sum<<"\n";
+    }    
     return 0;
 }
